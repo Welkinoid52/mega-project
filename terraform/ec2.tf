@@ -1,10 +1,9 @@
 resource "aws_key_pair" "deployer" {
-  key_name   = "terra-automate-key"
-  public_key = file("/Users/shubham/Documents/work/TrainWithShubham/terra-practice/terra-key.pub")
+  key_name   = "id_rs"  # Removed the extra quotation mark
+  public_key = file("./id_rsa.pub")
 }
 
 resource "aws_default_vpc" "default" {
-
 }
 
 resource "aws_security_group" "allow_user_to_connect" {
@@ -20,7 +19,7 @@ resource "aws_security_group" "allow_user_to_connect" {
   }
 
   egress {
-    description = " allow all outgoing traffic "
+    description = "allow all outgoing traffic"
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
@@ -57,7 +56,7 @@ resource "aws_instance" "testinstance" {
     Name = "Automate"
   }
   root_block_device {
-    volume_size = 30 
+    volume_size = 30
     volume_type = "gp3"
   }
 }
